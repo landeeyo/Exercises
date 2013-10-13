@@ -1,0 +1,4 @@
+C:\Users\aleph\Documents\SVN\trunk\StringMaths\StringMaths\bin\Debug\StringMaths.dll
+C:\Users\aleph\Documents\SVN\trunk\StringMaths\StringMaths\bin\Debug\StringMaths.pdb
+C:\Users\aleph\Documents\SVN\trunk\StringMaths\StringMaths\obj\Debug\StringMaths.dll
+C:\Users\aleph\Documents\SVN\trunk\StringMaths\StringMaths\obj\Debug\StringMaths.pdb
