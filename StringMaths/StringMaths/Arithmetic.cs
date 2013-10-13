@@ -60,7 +60,55 @@ namespace StringMaths
 
         public string Subtract(string a, string b)
         {
-            throw new NotImplementedException();
+            a = TrimZeroesFromLeft(a);
+            b = TrimZeroesFromLeft(b);
+            int comparison = Compare(a, b);
+            if (comparison == 0)
+                return "0";
+            string smaller = "";
+            string greater = "";
+            if (comparison == -1)
+            {
+                smaller = a;
+                greater = b;
+            }
+            else if (comparison == 1)
+            {
+                greater = a;
+                smaller = b;
+            }
+            int subtract = 0;
+            int remember = 0;
+            string ret = "";
+            string retR = "";
+            for (int i = 0; i < greater.Length; i++)
+            {
+                if (i < smaller.Length)
+                {
+                    if (CharToInt(greater[greater.Length - i - 1]) + remember < CharToInt(smaller[smaller.Length - i - 1]))
+                    {
+                        subtract = CharToInt(greater[greater.Length - i - 1]) + remember + 10 - CharToInt(smaller[smaller.Length - i - 1]);
+                        remember = -1;
+                    }
+                    else
+                    {
+                        subtract = CharToInt(greater[greater.Length - i - 1]) + remember - CharToInt(smaller[smaller.Length - i - 1]);
+                        remember = 0;
+                    }
+                }
+                else
+                {
+                    subtract = CharToInt(greater[greater.Length - i - 1]) + remember;
+                    if (subtract >= 0)
+                        remember = 0;
+                    else
+                        subtract = 10 + subtract;
+                }
+                retR += IntToChar(subtract);
+            }
+            for (int i = 1; i <= retR.Length; i++)
+                ret += retR[retR.Length - i];
+            return TrimZeroesFromLeft(ret);
         }
 
         public string Multiply(string a, string b)
@@ -109,6 +157,39 @@ namespace StringMaths
             while (s[i++] == '0')
                 ;
             return s.Substring(i - 1);
+        }
+
+        private int Compare(string a, string b)
+        {
+            a = TrimZeroesFromLeft(a);
+            b = TrimZeroesFromLeft(b);
+            if (a.Length == b.Length)
+            {
+                if (a == b)
+                    return 0;
+                else
+                {
+                    for (int i = 0; i < a.Length; i++)
+                    {
+                        if (a[i] < b[i])
+                            return -1;
+                        if (a[i] > b[i])
+                            return 1;
+                    }
+                }
+            }
+            else //If length of numbers differs
+            {
+                string shorter = Shorter(a, b);
+                string longer = Longer(a, b);
+                //When a is shorter then we return a<b
+                if (shorter == a)
+                    return -1;
+                //If b is shorter then we return a>b
+                else
+                    return 1;
+            }
+            return 0;
         }
 
         #endregion
