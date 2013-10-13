@@ -1,3 +1,3 @@
 An exercise project which objective is learning basics of nUnit. It will be done using a TDD software development process.
 
-Plan is to create simple mathematical library which provides methods like add, subtract, multiply and divide for very big numbers represented by strings. Next step could be creating well designed GUI calculator using it. Calculator project would give opportunity to use few important design patterns, so it's quite interesting perspective.
+Plan is to create simple mathematical library which provides methods like add, subtract, multiply and divide for very big numbers represented by strings. Next step could be creating well designed GUI calculator using it. Calculator project would give opportunity to use few important design patterns, so it's quite interesting perspective. 
