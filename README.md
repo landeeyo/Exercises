@@ -1,3 +1,1 @@
-Exercises
-=========
-TEST
+Small projects and exercises.
