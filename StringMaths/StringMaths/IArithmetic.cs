@@ -14,5 +14,6 @@ namespace StringMaths
         string Subtract(string a, string b);
         string Multiply(string a, string b);
         string Divide(string a, string b);
+        string TrimZeroesFromLeft(string s);
     }
 }
