@@ -110,7 +110,7 @@ namespace StringMaths.Tests
         public void TestTrimZeroesFromLeft()
         {
             Arithmetic arithmetic = new Arithmetic();
-            
+
             string testSequence = "0003782397424";
             string properResult = "3782397424";
             string result = "";
@@ -133,5 +133,48 @@ namespace StringMaths.Tests
             result = arithmetic.TrimZeroesFromLeft(testSequence);
             Assert.AreEqual(result, properResult);
         }
+
+        [Test]
+        public void TestAddLarge()
+        {
+            Arithmetic arithmetic = new Arithmetic();
+
+            var a = "76428734608769874623948746958274356023479562384756091826437125638218072312947238946275478523479659287436598237569462347892";
+            var b = "54678353985762587643958374563982647327053784563789456302847563784560387456308745627356028746507834560937456093767523672346";
+            var properResult = "131107088594532462267907121522257003350533346948545548129284689422778459769255984573631507269987493848374054331336986020238";
+
+            TestOperation(a, b, arithmetic.Add, properResult);
+        }
+
+        [Test]
+        public void TestSubtractLarge()
+        {
+            Arithmetic arithmetic = new Arithmetic();
+
+            var a = "76428734608769874623948746958274356023479562384756091826437125638218072312947238946275478523479659287436598237569462347892";
+            var b = "54678353985762587643958374563982647327053784563789456302847563784560387456308745627356028746507834560937456093767523672346";
+            var properResult = "21750380623007286979990372394291708696425777820966635523589561853657684856638493318919449776971824726499142143801938675546";
+
+            TestOperation(a, b, arithmetic.Subtract, properResult);
+        }
+
+        #region Helpers
+
+        delegate string ArithmeticOperation(string a, string b);
+
+        private void TestOperation(string a, string b, ArithmeticOperation arithmeticOperation, string properResult)
+        {
+            Console.WriteLine("a: " + a.ToString());
+            Console.WriteLine("b: " + b.ToString());
+
+            var result = arithmeticOperation(a.ToString(), b.ToString());
+
+            Console.WriteLine("Result: " + result);
+            Console.WriteLine("Proper result: " + properResult);
+
+            Assert.AreEqual(result, properResult);
+        }
+
+        #endregion
     }
 }
