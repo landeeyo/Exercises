@@ -113,7 +113,25 @@ namespace StringMaths
 
         public string Multiply(string a, string b)
         {
-            throw new NotImplementedException();
+            a = TrimZeroesFromLeft(a);
+            b = TrimZeroesFromLeft(b);
+            if (Compare(b, "0") == -1 || Compare(b, "0") == 0)
+                return "0";
+            string sum = "0";
+            //Iteration by digits of b
+            for (int i = 1; i <= b.Length; i++)
+            {
+                //Select i-th digit in reverse order
+                var tmp = b[b.Length - i];
+                //Multiplicating a by i-th digit of b
+                var multiplicated = MultiplySlow(a, tmp.ToString());
+                //Multiplicating by 10^(i-1)
+                for (int j = 0; j < i - 1; j++)
+                    multiplicated += "0";
+                //Adding calculated number to final result
+                sum = Add(sum, multiplicated);
+            }
+            return sum;
         }
 
         public string Divide(string a, string b)
@@ -154,9 +172,12 @@ namespace StringMaths
         public string TrimZeroesFromLeft(string s)
         {
             int i = 0;
-            while (s[i++] == '0')
-                ;
-            return s.Substring(i - 1);
+            while (i < s.Length && s[i] == '0')
+                i++;
+            if (i > 0)
+                return s.Substring(i - 1);
+            else
+                return s;
         }
 
         private int Compare(string a, string b)
@@ -190,6 +211,29 @@ namespace StringMaths
                     return 1;
             }
             return 0;
+        }
+
+        /// <summary>
+        /// Function is multiplying by addition
+        /// </summary>
+        /// <param name="a">Number a</param>
+        /// <param name="b">Number b</param>
+        /// <returns>a*b</returns>
+        private string MultiplySlow(string a, string b)
+        {
+            a = TrimZeroesFromLeft(a);
+            b = TrimZeroesFromLeft(b);
+            if (Compare(b, "0") == -1 || Compare(b, "0") == 0)
+                return "0";
+            string tmp = a;
+            string i = "1";
+            while (true)
+            {
+                if (Compare(i, b) != -1)
+                    return tmp;
+                i = Add(i, "1");
+                tmp = Add(tmp, a);
+            }
         }
 
         #endregion
