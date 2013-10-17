@@ -136,7 +136,39 @@ namespace StringMaths
 
         public string Divide(string a, string b)
         {
-            throw new NotImplementedException();
+            a = TrimZeroesFromLeft(a);
+            b = TrimZeroesFromLeft(b);
+            int comparison = Compare(a, b);
+            if (comparison == 0)
+                return "1";
+            if (comparison == -1)
+            {
+                return "0";
+            } 
+            string increase = b;
+            string i = "1";
+            while (true)
+            {
+                if (Compare(a, increase + "0") == -1)
+                    break;
+                increase += "0";
+                i = Multiply(i, "10");
+            }
+            string power = i, increaseNew;
+            while (true)
+            {
+                increaseNew = Add(increase, Multiply(power, b));
+                if (Compare(a, increaseNew) == -1)
+                {
+                    if (power == "1")
+                        break;
+                    power = power.Substring(0, power.Length - 1);
+                    continue;
+                }
+                increase = increaseNew;
+                i = Add(i, power);
+            }
+            return i;
         }
 
         #endregion
@@ -175,7 +207,7 @@ namespace StringMaths
             while (i < s.Length && s[i] == '0')
                 i++;
             if (i > 0)
-                return s.Substring(i - 1);
+                return s.Substring(i);
             else
                 return s;
         }

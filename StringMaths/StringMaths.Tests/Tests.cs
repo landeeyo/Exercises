@@ -10,12 +10,14 @@ namespace StringMaths.Tests
     [TestFixture]
     public class Tests
     {
+        #region Test methods
+
         [Test]
         public void TestAddSmall()
         {
             Arithmetic arithmetic = new Arithmetic();
             Random rnd = new Random();
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 1000; i++)
             {
                 Console.WriteLine("Test no. " + i.ToString());
                 var a = rnd.Next(10000);
@@ -39,7 +41,7 @@ namespace StringMaths.Tests
         {
             Arithmetic arithmetic = new Arithmetic();
             Random rnd = new Random();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 Console.WriteLine("Test no. " + i.ToString());
                 var a = rnd.Next(int.MaxValue);
@@ -63,7 +65,7 @@ namespace StringMaths.Tests
         {
             Arithmetic arithmetic = new Arithmetic();
             Random rnd = new Random();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 Console.WriteLine("Test no. " + i.ToString());
                 var a = rnd.Next(1000);
@@ -87,7 +89,7 @@ namespace StringMaths.Tests
         {
             Arithmetic arithmetic = new Arithmetic();
             Random rnd = new Random();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 Console.WriteLine("Test no. " + i.ToString());
                 var a = rnd.Next(int.MaxValue);
@@ -157,7 +159,7 @@ namespace StringMaths.Tests
 
             TestOperation(a, b, arithmetic.Subtract, properResult);
         }
-        
+
         [Test]
         public void TestMultiplyLarge()
         {
@@ -177,10 +179,12 @@ namespace StringMaths.Tests
 
             var a = "76428734608769874623948746958274356023479562384756091826437125638218072312947238946275478523479659287436598237569462347892";
             var b = "54678353985762587643958374563982647327053784563789456302847563784560387456308745627356028746507834560937456093767523672346";
-            var properResult = "1.397787772263056";
+            var properResult = "1";
 
             TestOperation(a, b, arithmetic.Divide, properResult);
         }
+
+        #endregion
 
         #region Helpers
 

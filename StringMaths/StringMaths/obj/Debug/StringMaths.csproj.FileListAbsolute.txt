@@ -2,3 +2,4 @@ C:\Users\aleph\Documents\SVN\trunk\StringMaths\StringMaths\bin\Debug\StringMaths
 C:\Users\aleph\Documents\SVN\trunk\StringMaths\StringMaths\bin\Debug\StringMaths.pdb
 C:\Users\aleph\Documents\SVN\trunk\StringMaths\StringMaths\obj\Debug\StringMaths.dll
 C:\Users\aleph\Documents\SVN\trunk\StringMaths\StringMaths\obj\Debug\StringMaths.pdb
+C:\Users\aleph\Documents\SVN\trunk\StringMaths\StringMaths\obj\Debug\StringMaths.csprojResolveAssemblyReference.cache
